@@ -5,7 +5,7 @@
     <title>Добавить нового пользователя</title>
 </head>
 <body>
-<form th:method="POST" th:action="${add} ? @{/} : @{/edit_user/{id}(id=${user.getId()})}" th:object="${user}">
+<form th:method="${add} ? 'POST' : 'PATCH'" th:action="${add} ? @{/} : @{/edit_user/{id}(id=${user.getId()})}" th:object="${user}">
     <label for="name">Имя</label>
     <input type="text" th:field="*{name}" id="name"/>
     <br><br>

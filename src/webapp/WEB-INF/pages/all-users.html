@@ -14,6 +14,7 @@
         <th>Возраст</th>
         <th>Почта</th>
         <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -26,9 +27,11 @@
             <form th:method="GET" th:action="@{/edit_user/{id}(id=${user.getId()})}">
                 <input type="submit" value="Изменить"/>
             </form>
-<!--            <form th:method="DELETE" th:action="@{/user_{id}(id=${user.getId()})}">-->
-<!--                <input type="submit" value="Удалить"/>-->
-<!--            </form>-->
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+                <input type="submit" value="Удалить"/>
+            </form>
         </td>
     </tr>
     </tbody>
