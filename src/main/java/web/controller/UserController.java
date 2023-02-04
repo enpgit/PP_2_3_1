@@ -3,9 +3,7 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
@@ -28,12 +26,28 @@ public class UserController {
     @GetMapping(value = "/add_user")
     public String addUser(ModelMap model) {
         model.addAttribute("user", new User());
+        model.addAttribute("add", true);
         return "user-info";
     }
 
-    @PostMapping
-    public String saveUser(@ModelAttribute("user") User user) {
+    @PostMapping(value = "/add_user")
+    public String saveUser(@ModelAttribute("user") User user, ModelMap model) {
         userService.saveUser(user);
+        model.addAttribute("add", true);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/edit_user/{id}")
+    public String editUser(ModelMap model, @PathVariable("id") Long id) {
+        model.addAttribute("user", userService.getUser(id));
+        model.addAttribute("add", false);
+        return "user-info";
+    }
+
+    @PostMapping(value = "/edit_user/{id}")
+    public String updateUser(@ModelAttribute("user") User user, ModelMap model) {
+        userService.updateUser(user);
+        model.addAttribute("add", false);
         return "redirect:/";
     }
 }
