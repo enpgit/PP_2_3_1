@@ -5,26 +5,26 @@
     <title>Пользователи</title>
 </head>
 <body>
-<div>
-    <table th:border="2">
-        <caption>Пользователи</caption>
-        <thead>
-        <tr>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Возраст</th>
-            <th>Почта</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user : ${allUser}">
-            <td th:utext="${user.getName()}">...</td>
-            <td th:utext="${user.getSurname()}">...</td>
-            <td th:utext="${user.getAge()}">...</td>
-            <td th:utext="${user.getEmail()}">...</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<table th:border="2">
+    <caption>Пользователи</caption>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Почта</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${allUser}">
+        <td th:utext="${user.getName()}">...</td>
+        <td th:utext="${user.getSurname()}">...</td>
+        <td th:utext="${user.getAge()}">...</td>
+        <td th:utext="${user.getEmail()}">...</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<input type="button" value="Добавить" onclick="window.location.href='add_user'">
 </body>
 </html>
